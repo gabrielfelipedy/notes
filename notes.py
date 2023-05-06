@@ -80,7 +80,7 @@ class Aluno:
 
     def __str__(self):
         aux = self.contability(self.notes)
-        return "\nName:           ---> " + self.name + "\nCorrect answers ---> " + CLRS['g'] + str(aux["corrects"]) + CLRS['b'] + "\nWrong answers:  ---> " + CLRS['r'] + str(aux["wrongs"]) + CLRS['b'] + "\nNote: " + str(aux["corrects"] * 10) + "\n"
+        return f"\nName:           ---> {self.name} \nCorrect answers ---> {CLRS['g']} {aux['corrects']} {CLRS['b']}\nWrong answers:  ---> {CLRS['r']} {aux['wrongs']} {CLRS['b']} \nNote:           --->  {aux['corrects'] * 10}\n"
 
     def set_name(self, name):
         self.name = name
