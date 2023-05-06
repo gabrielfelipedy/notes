@@ -27,11 +27,11 @@ ANSW = {
 
 alunos = shelve.open('data')
 
-# -------------------------------------- MAIN CLASS DEFINITION -------------------------------------------
+# --------------- MAIN CLASS DEFINITION --------
 #
 # Here its defined the principal class reposable to storage all informatios about the pupil
 #
-# --------------------------------------------------------------------------------------------------------
+# ----------------------------------------------
 
 class Aluno:
     def __init__(self, name, notes, answers=[]):
@@ -80,7 +80,7 @@ class Aluno:
 
     def __str__(self):
         aux = self.contability(self.notes)
-        return "\nName:           ---> " + self.name + "\nCorrect answers ---> " + CLRS['g'] + str(aux["corrects"]) + CLRS['b'] + "\nWrong answers:  ---> " + CLRS['r'] + str(aux["wrongs"]) + CLRS['b'] + "\n"
+        return "\nName:           ---> " + self.name + "\nCorrect answers ---> " + CLRS['g'] + str(aux["corrects"]) + CLRS['b'] + "\nWrong answers:  ---> " + CLRS['r'] + str(aux["wrongs"]) + CLRS['b'] + "\nNote: " + str(aux["corrects"] * 10) + "\n"
 
     def set_name(self, name):
         self.name = name
@@ -118,11 +118,11 @@ def clear_trash():
             del(alunos[k])
         index += 1
 
-# --------------------------------------- INPUT CONCERN --------------------------------------------------
+# ------------------------ INPUT CONCERN --------------------
 #
 # In this concern the only responsibilty is capture the input of the user and send it for the next concern
 #
-# --------------------------------------------------------------------------------------------------------
+# -----------------------------------------------------------
 
 args = sys.argv
 
@@ -162,18 +162,20 @@ if args[1] == "arg":
         print_keys(args[2])
     exit()
 
+#FIXME: change the verifications
 elif len(args) != 8:
     print("Invalid qtde of args!")
     exit()
 
-# ----------------------------- CALC NOT CONCERN ----------------------------------------------------------
+# ---------------------- CALC NOT CONCERN ---------------------
 #
 # That layers will calculate the question wrong and questions correct
 #
-# ---------------------------------------------------------------------------------------------------------
+# ---------------------------------------------------------------
 
 notes = []
 
+#TODO: move method to class
 def calc_notes(args):
     for n, c in enumerate(args):
         if(n == 0): continue
@@ -186,11 +188,11 @@ def calc_notes(args):
 
         #print(f'Note {c} copied')
 
-# --------------------------------- OPERATION CONCERN -------------------------------------------------------
+# ------------------- OPERATION CONCERN --------------------------
 #
 # This concern is responsable to do the principal tasks on the system as deletion or adding new pupils
 #
-# -----------------------------------------------------------------------------------------------------------
+# ----------------------------------------------------------------
 
 def addAluno(alunos, aluno):
     opt = str(input("\nAdd pupil on the system? [y/n]? ")).strip().lower()
